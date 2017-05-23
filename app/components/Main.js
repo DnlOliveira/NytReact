@@ -34,14 +34,17 @@ var Main = React.createClass({
   //       console.log(saved);
   //     }.bind(this));
   // },
-
-  //if component changes run query for articles
-  componentDidUpdate: function() {
+  searchForArticles: function(){
     helpers.runQuery(this.state.topic, this.state.begin, this.state.end)
       .then(function(results) {
         this.setState({results: results});
         console.log(this.state.results);
       }.bind(this));
+  },
+
+  //if component changes run query for articles
+  componentDidUpdate: function() {
+    
   },
 
   //for child to update parent's terms
@@ -73,10 +76,16 @@ var Main = React.createClass({
         </div>
 
         <br/>
+
+        <div className="row" id="search-title">
+          <div className="col-md-12">
+            <h2>Search</h2>
+          </div>
+        </div>
       
         <div className="row">
           <div className="col-md-12" id="search-window">
-            <Search setTerm={this.setTerm} />
+            <Search searchForArticles={this.searchForArticles} setTerm={this.setTerm} />
           </div>
         </div>
 

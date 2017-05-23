@@ -53,7 +53,6 @@ var helper = {
   postSaved: function(data) {
     // console.log(data);
     axios.post("/api", data);
-    return true;
   }
 
   

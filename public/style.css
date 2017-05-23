@@ -9,12 +9,23 @@
 	text-align: center;
   border-style: solid;
   width: 100%;
+  background: rgba(204, 204, 204, 0.9);
+}
+
+body{
+  background: url('bg.jpg');
+}
+body button{
+  background-color: #002e5a;
+  color: #ffffff;
 }
 
 #search-window form{
   margin: 20px;
 }
-
-#search-title{
+#search-box{
+  width: 100%;
+}
+#search-box input{
   width: 100%;
 }

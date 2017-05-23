@@ -22,6 +22,8 @@ var Search = React.createClass({
     this.props.setTerm(this.state.topic, this.state.begin, this.state.end);
     console.log(this.state.topic, this.state.begin, this.state.end);
 
+    this.props.searchForArticles();
+
       this.setState(
         {
             topic: '',
@@ -34,12 +36,6 @@ var Search = React.createClass({
   render: function() {
     return(
       <div className="container" id="search-box">
-        
-        <div className="row" id="search-title">
-          <div className="col-md-12">
-            <h2>Search</h2>
-          </div>
-        </div>
 
         <div className="row">
           <div className="col-md-12">

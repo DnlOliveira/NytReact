@@ -9,8 +9,7 @@ var Saved = React.createClass({
     };
   },
 
-  //get saved articles when page loads
-  componentDidMount: function() {
+  getSavedArticles: function() {
     helpers.getSaved()
       .then(function(response) {
         // console.log(response.data);
@@ -28,6 +27,11 @@ var Saved = React.createClass({
       }.bind(this));
   },
 
+  //get saved articles when page loads
+  componentDidMount: function() {
+    this.getSavedArticles();
+  },
+
   render: function() {
     return (
       <div className="row">
@@ -36,7 +40,7 @@ var Saved = React.createClass({
             return (
               <div className="row">
                 <div className="col-md-12">
-                  <h3><a href={res.URL}>{res.title}</a></h3>
+                  <h3><a href={res.url}>{res.title}</a></h3>
                   <h4>{res.date}</h4>
                   <button className="btn">Delete</button>
                   <hr/>
