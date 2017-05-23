@@ -1,7 +1,9 @@
 var React = require("react");
 var Search = require("./children/Search");
+var Saved = require("./children/Saved");
+var Header = require("./children/Header");
 var Result = require("./children/Result");
-var helpers = require("./utils/helpers")
+var helpers = require("./utils/helpers");
 
 var Main = React.createClass({
 
@@ -10,17 +12,18 @@ var Main = React.createClass({
       topic: "",
       begin: "",
       end: "",
-      results: []
+      results: [],
+      savedResults: []
     };
   },
 
   //get saved articles when page loads
-  // componentDidMount: function() {
-  //   helpers.getSaved()
-  //     .then(function(response) {
-  //       console.log(response);
-  //     });
-  // },
+  componentDidMount: function() {
+    helpers.getSaved()
+      .then(function(response) {
+        console.log(response);
+      }.bind(this));
+  },
 
   //if component changes run query for articles
   componentDidUpdate: function() {
@@ -42,28 +45,36 @@ var Main = React.createClass({
     );
   },
 
+  refreshSavedArticles: function() {
+    helpers.getSaved()
+      .then(function(data) {
+        console.log(data);
+      });
+  },
+
   render: function() {
     return(
       <div className="container">
 
-        <header>
-          <div className="row">
-            <div className="col-md-12">
-              <h1>New York Times Article Scrubber</h1>
-              <h4>Search for and annotate articles of interest!</h4>
-            </div>
+        <div className="row">
+          <div className="col-md-12" id="header">
+            <Header />
           </div>
-        </header>
+        </div>
+
+        <br/>
       
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-12" id="search-window">
             <Search setTerm={this.setTerm} />
           </div>
         </div>
 
+        <br/>
+
         <div className="row">
-          <div className="col-md-12">
-            <h2>Results</h2>
+          <div className="col-md-12" id="result-title">
+            <h2>Search Results</h2>
           </div>
         </div>
 
@@ -71,9 +82,23 @@ var Main = React.createClass({
           <div className="col-md-12">
             {this.state.results.map(function(article) {
               return (
-                <Result title={article.title} date={article.date} />
+                <Result id={article.articleID} title={article.title} date={article.date} url={article.url}/>
               );
             })}
+          </div>
+        </div>
+
+        <br/>
+
+        <div className="row">
+          <div className="col-md-12" id="saved-title">
+            <h2>Saved Articles</h2>
+          </div>
+        </div>
+          
+        <div className="row">
+          <div className="col-md-12">
+            <Saved />
           </div>
         </div>
 

@@ -1,5 +1,6 @@
 var React = require("react");
 
+
 var Search = React.createClass({
 
   getInitialState: function() {
@@ -35,7 +36,7 @@ var Search = React.createClass({
       <div className="container" id="search-box">
         
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-12" id="search-title">
             <h2>Search</h2>
           </div>
         </div>
@@ -46,15 +47,15 @@ var Search = React.createClass({
               <label>
                 <h3>Topic</h3>
                 <input name="topic" type="text" value={this.state.topic} onChange={this.handleChange}></input>
-              </label>
+              </label><br/>
               <label>
                 <h3>Start Year</h3>
                 <input name="begin" type="text" value={this.state.begin} onChange={this.handleChange}></input>
-              </label>
+              </label><br/>
               <label>
                 <h3>End Year</h3>
                 <input name="end" type="text" value={this.state.end} onChange={this.handleChange}></input>
-              </label>
+              </label><br/>
               <button type="submit">Search</button>
             </form>
           </div>

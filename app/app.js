@@ -2,6 +2,7 @@
 var React = require("react");
 var ReactDOM = require("react-dom");
 
+// var routes = require("./config/routes");
 var Main = require("./components/Main");
 
 // This code renders a simple "Hello World".

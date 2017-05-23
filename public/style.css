@@ -1,0 +1,15 @@
+#header,
+#search-title,
+#search-window,
+#result-title,
+#result-window,
+#saved-title{
+  display: block;
+	text-align: center;
+  border-style: solid;
+  width: 100%;
+}
+
+#search-window form{
+  margin: 20px;
+}

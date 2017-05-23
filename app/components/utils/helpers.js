@@ -44,10 +44,20 @@ var helper = {
       }
     });//then
     
-  }//runQuery
+  },//runQuery
+
+  getSaved: function() {
+    return axios.get("/api");
+  },
+
+  postSaved: function(data) {
+    // console.log(data);
+    axios.post("/api", data);
+    return true;
+  }
 
   
 
-};//helper function
+};//helper object
 
 module.exports = helper;
