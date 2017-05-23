@@ -42,7 +42,7 @@ var Result = React.createClass({
           <div className="col-md-12">
             <h3><a href={this.props.url}>{this.props.title}</a></h3>
             <h4>{this.props.date}</h4>
-            <button value={this.props.id} onClick={this.handleOnClick}>Save</button>
+            <button className="btn" value={this.props.id} onClick={this.handleOnClick}>Save</button>
             <hr/>
           </div>
         </div>

@@ -35,8 +35,8 @@ var Search = React.createClass({
     return(
       <div className="container" id="search-box">
         
-        <div className="row">
-          <div className="col-md-12" id="search-title">
+        <div className="row" id="search-title">
+          <div className="col-md-12">
             <h2>Search</h2>
           </div>
         </div>
@@ -56,7 +56,7 @@ var Search = React.createClass({
                 <h3>End Year</h3>
                 <input name="end" type="text" value={this.state.end} onChange={this.handleChange}></input>
               </label><br/>
-              <button type="submit">Search</button>
+              <button className="btn" type="submit">Search</button>
             </form>
           </div>
         </div>

@@ -3,7 +3,8 @@
 #search-window,
 #result-title,
 #result-window,
-#saved-title{
+#saved-title,
+#saved-window{
   display: block;
 	text-align: center;
   border-style: solid;
@@ -12,4 +13,8 @@
 
 #search-window form{
   margin: 20px;
+}
+
+#search-title{
+  width: 100%;
 }

@@ -12,18 +12,28 @@ var Main = React.createClass({
       topic: "",
       begin: "",
       end: "",
-      results: [],
-      savedResults: []
+      results: []
     };
   },
 
   //get saved articles when page loads
-  componentDidMount: function() {
-    helpers.getSaved()
-      .then(function(response) {
-        console.log(response);
-      }.bind(this));
-  },
+  // componentDidMount: function() {
+  //   helpers.getSaved()
+  //     .then(function(response) {
+  //       // console.log(response.data);
+  //       var res = response.data;
+  //       var saved = [];
+  //       for (var i = 0; i < res.length; i++) {
+  //         saved.push(res[i]);
+  //       }
+
+  //       this.setState({
+  //         savedResults: saved
+  //       });
+
+  //       console.log(saved);
+  //     }.bind(this));
+  // },
 
   //if component changes run query for articles
   componentDidUpdate: function() {
@@ -79,7 +89,7 @@ var Main = React.createClass({
         </div>
 
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-12" id="result-window">
             {this.state.results.map(function(article) {
               return (
                 <Result id={article.articleID} title={article.title} date={article.date} url={article.url}/>
@@ -97,7 +107,7 @@ var Main = React.createClass({
         </div>
           
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-12" id="saved-window">
             <Saved />
           </div>
         </div>

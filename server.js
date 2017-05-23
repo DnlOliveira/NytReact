@@ -72,12 +72,9 @@ app.get("/api", function(req, res) {
         url: article.URL,
         date: article.date,
         articleID: article.articleID
-      })
-    })
-    // res.send(articles);
-    
-    return articles;
-  
+      });
+    });
+    res.send(articles); 
   });
 
 });
