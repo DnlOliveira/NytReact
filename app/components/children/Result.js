@@ -2,6 +2,15 @@ var React = require("react");
 var helpers = require("../utils/helpers");
 
 var Result = React.createClass({
+
+  getInitialState: function() {
+    return {
+      topic: "",
+      begin: "",
+      end: ""
+    };
+  },
+  
   handleOnClick: function(event) {
 
     var article = {
@@ -11,10 +20,7 @@ var Result = React.createClass({
       date: this.props.date
     };
 
-    helpers.postSaved(article)
-      .then( function(res) {
-        this.props.refreshSavedArticles();
-      }.bind(this));
+    helpers.postSaved(article);
 
     // $.ajax({
     //   article
@@ -40,10 +46,18 @@ var Result = React.createClass({
 
         <div className="row">
           <div className="col-md-12">
-            <h3><a href={this.props.url}>{this.props.title}</a></h3>
-            <h4>{this.props.date}</h4>
-            <button className="btn" value={this.props.id} onClick={this.handleOnClick}>Save</button>
-            <hr/>
+            {this.props.results.map( (res, index) => {
+              return (
+                <div key={index} className="row">
+                  <div className="col-md-12">
+                    <h3><a href={res.url}>{res.title}</a></h3>
+                    <h4>{res.date}</h4>
+                    <button onClick={this.handleOnClick} className="btn" value={res.id}>Save</button>
+                    <hr/>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 

@@ -16,24 +16,10 @@ var Main = React.createClass({
     };
   },
 
-  //get saved articles when page loads
-  // componentDidMount: function() {
-  //   helpers.getSaved()
-  //     .then(function(response) {
-  //       // console.log(response.data);
-  //       var res = response.data;
-  //       var saved = [];
-  //       for (var i = 0; i < res.length; i++) {
-  //         saved.push(res[i]);
-  //       }
+  refreshSavedArticles: function() {
+    this.refs.child.updateSavedArticles();
+  },
 
-  //       this.setState({
-  //         savedResults: saved
-  //       });
-
-  //       console.log(saved);
-  //     }.bind(this));
-  // },
   searchForArticles: function(){
     helpers.runQuery(this.state.topic, this.state.begin, this.state.end)
       .then(function(results) {
@@ -44,11 +30,12 @@ var Main = React.createClass({
 
   //if component changes run query for articles
   componentDidUpdate: function() {
-    
+    this.searchForArticles();
   },
 
   //for child to update parent's terms
   setTerm: function(topic, begin, end) {
+
     this.setState(
       {
         topic: topic,
@@ -58,12 +45,6 @@ var Main = React.createClass({
     );
   },
 
-  refreshSavedArticles: function() {
-    helpers.getSaved()
-      .then(function(data) {
-        console.log(data);
-      });
-  },
 
   render: function() {
     return(
@@ -85,7 +66,7 @@ var Main = React.createClass({
       
         <div className="row">
           <div className="col-md-12" id="search-window">
-            <Search searchForArticles={this.searchForArticles} setTerm={this.setTerm} />
+            <Search setTerm={this.setTerm} />
           </div>
         </div>
 
@@ -99,11 +80,7 @@ var Main = React.createClass({
 
         <div className="row">
           <div className="col-md-12" id="result-window">
-            {this.state.results.map(function(article) {
-              return (
-                <Result id={article.articleID} title={article.title} date={article.date} url={article.url}/>
-              );
-            })}
+            <Result results={this.state.results} />
           </div>
         </div>
 
@@ -117,7 +94,7 @@ var Main = React.createClass({
           
         <div className="row">
           <div className="col-md-12" id="saved-window">
-            <Saved />
+            <Saved ref="child" />
           </div>
         </div>
 

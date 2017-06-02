@@ -18,11 +18,13 @@ var Search = React.createClass({
   },
   
   handleSubmit: function(event) {
+    
     event.preventDefault();
+
     this.props.setTerm(this.state.topic, this.state.begin, this.state.end);
+
     console.log(this.state.topic, this.state.begin, this.state.end);
 
-    this.props.searchForArticles();
 
       this.setState(
         {
@@ -38,8 +40,9 @@ var Search = React.createClass({
       <div className="container" id="search-box">
 
         <div className="row">
+
           <div className="col-md-12">
-            <form onSubmit={this.handleSubmit}>
+            <form id="myform" onSubmit={this.handleSubmit}>
               <label>
                 <h3>Topic</h3>
                 <input name="topic" type="text" value={this.state.topic} onChange={this.handleChange}></input>
@@ -55,9 +58,9 @@ var Search = React.createClass({
               <button className="btn" type="submit">Search</button>
             </form>
           </div>
-        </div>
 
-      </div>
+        </div>
+    </div>
     );
   }
 

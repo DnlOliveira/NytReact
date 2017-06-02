@@ -32,17 +32,21 @@ var Saved = React.createClass({
     this.getSavedArticles();
   },
 
+  updateSavedArticles: function() {
+    this.getSavedArticles();
+  },
+
   render: function() {
     return (
       <div className="row">
         <div className="col-md-12">
-          {this.state.savedResults.map( function(res) {
+          {this.state.savedResults.map( function(res, index) {
             return (
-              <div className="row">
+              <div key={index} className="row">
                 <div className="col-md-12">
                   <h3><a href={res.url}>{res.title}</a></h3>
                   <h4>{res.date}</h4>
-                  <button className="btn">Delete</button>
+                  <button value={res.articleID} className="btn">Delete</button>
                   <hr/>
                 </div>
               </div>
