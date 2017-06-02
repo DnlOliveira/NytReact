@@ -5,39 +5,27 @@ var Result = React.createClass({
 
   getInitialState: function() {
     return {
-      topic: "",
-      begin: "",
-      end: ""
+      results: this.props.results
     };
   },
   
   handleOnClick: function(event) {
 
+    console.log(event.target.value);
+    var i = event.target.value;
+
     var article = {
-      id: this.props.id,
-      title: this.props.title,
-      url: this.props.url,
-      date: this.props.date
+      id: this.props.results[i].id,
+      title: this.props.results[i].title,
+      url: this.props.results[i].url,
+      date: this.props.results[i].date
     };
 
-    helpers.postSaved(article);
+    console.log(article);
 
-    // $.ajax({
-    //   article
-    // }).done(function(data) {
-    //   helpers.postSaved(article);
-    // }).done(function(value){
-    //   this.props.refreshSavedArticles();
-    // });
+    this.props.saveArticles(article);
 
-    // var article = {
-    //   id: this.props.id,
-    //   title: this.props.title,
-    //   url: this.props.url,
-    //   date: this.props.date
-    // };
-
-    // helpers.postSaved(article);
+    
   },
 
   render: function() {
@@ -47,12 +35,13 @@ var Result = React.createClass({
         <div className="row">
           <div className="col-md-12">
             {this.props.results.map( (res, index) => {
+
               return (
                 <div key={index} className="row">
                   <div className="col-md-12">
                     <h3><a href={res.url}>{res.title}</a></h3>
                     <h4>{res.date}</h4>
-                    <button onClick={this.handleOnClick} className="btn" value={res.id}>Save</button>
+                    <button onClick={this.handleOnClick} className="btn" value={index}>Save</button>
                     <hr/>
                   </div>
                 </div>

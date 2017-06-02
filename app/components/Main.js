@@ -16,12 +16,16 @@ var Main = React.createClass({
     };
   },
 
-  refreshSavedArticles: function() {
-    this.refs.child.updateSavedArticles();
+  saveArticles: function(article) {
+    helpers.postSaved(article)
+      .then( (res) => {
+        this.refs.child.getSavedArticles();
+      });
+    
   },
 
-  searchForArticles: function(){
-    helpers.runQuery(this.state.topic, this.state.begin, this.state.end)
+  searchForArticles: function(topic, begin, end){
+    helpers.runQuery(topic, begin, end)
       .then(function(results) {
         this.setState({results: results});
         console.log(this.state.results);
@@ -30,20 +34,20 @@ var Main = React.createClass({
 
   //if component changes run query for articles
   componentDidUpdate: function() {
-    this.searchForArticles();
+
   },
 
   //for child to update parent's terms
-  setTerm: function(topic, begin, end) {
+  // setTerm: function(topic, begin, end) {
 
-    this.setState(
-      {
-        topic: topic,
-        begin: begin,
-        end: end
-      }
-    );
-  },
+  //   this.setState(
+  //     {
+  //       topic: topic,
+  //       begin: begin,
+  //       end: end
+  //     }
+  //   );
+  // },
 
 
   render: function() {
@@ -66,7 +70,7 @@ var Main = React.createClass({
       
         <div className="row">
           <div className="col-md-12" id="search-window">
-            <Search setTerm={this.setTerm} />
+            <Search searchForArticles={this.searchForArticles} />
           </div>
         </div>
 
@@ -80,7 +84,7 @@ var Main = React.createClass({
 
         <div className="row">
           <div className="col-md-12" id="result-window">
-            <Result results={this.state.results} />
+            <Result saveArticles={this.saveArticles} results={this.state.results} />
           </div>
         </div>
 

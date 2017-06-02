@@ -11,28 +11,26 @@ var Search = React.createClass({
     };
   },
 
+  //handles input changes by the keystroke
   handleChange: function(event) {
     var newState = {};
     newState[event.target.name] = event.target.value;
     this.setState(newState);
   },
   
+  // handles the submit button 
   handleSubmit: function(event) {
-    
     event.preventDefault();
 
-    this.props.setTerm(this.state.topic, this.state.begin, this.state.end);
+    this.props.searchForArticles(this.state.topic, this.state.begin, this.state.end);
 
-    console.log(this.state.topic, this.state.begin, this.state.end);
-
-
-      this.setState(
-        {
-            topic: '',
-            begin: '',
-            end: ''
-        }
-      );  
+    this.setState(
+      {
+          topic: '',
+          begin: '',
+          end: ''
+      }
+    );  
   },
 
   render: function() {

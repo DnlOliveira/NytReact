@@ -32,10 +32,6 @@ var Saved = React.createClass({
     this.getSavedArticles();
   },
 
-  updateSavedArticles: function() {
-    this.getSavedArticles();
-  },
-
   render: function() {
     return (
       <div className="row">
