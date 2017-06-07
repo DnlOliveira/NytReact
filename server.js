@@ -102,3 +102,19 @@ app.post("/api", function(req, res) {
   });
 
 });
+
+
+//This route will delete articles saved from the database
+app.post("/api/delete", function(req, res) {
+  console.log(req.body);
+
+  Article.remove( {articleID: req.body.id}, function(err) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.send("Saved Article");
+    }
+  });
+
+});

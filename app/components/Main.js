@@ -12,15 +12,18 @@ var Main = React.createClass({
       topic: "",
       begin: "",
       end: "",
-      results: []
+      results: [],
+      saved: []
     };
   },
 
   saveArticles: function(article) {
-    helpers.postSaved(article)
-      .then( (res) => {
-        this.refs.child.getSavedArticles();
-      });
+
+    var promise = new Promise( (resolve, reject) => {
+      resolve(helpers.postSaved(article));
+    } ).then( (res) => {
+      this.getSavedArticles();
+    });
     
   },
 
@@ -32,22 +35,28 @@ var Main = React.createClass({
       }.bind(this));
   },
 
-  //if component changes run query for articles
+  getSavedArticles: function() {
+    helpers.getSaved()
+      .then(function(response) {
+        // console.log(response.data);
+        var res = response.data;
+        var saved = [];
+        for (var i = 0; i < res.length; i++) {
+          saved.push(res[i]);
+        }
+
+        this.setState({
+          saved: saved
+        });
+
+        // console.log(saved);
+      }.bind(this));
+  },
+
+
   componentDidUpdate: function() {
 
   },
-
-  //for child to update parent's terms
-  // setTerm: function(topic, begin, end) {
-
-  //   this.setState(
-  //     {
-  //       topic: topic,
-  //       begin: begin,
-  //       end: end
-  //     }
-  //   );
-  // },
 
 
   render: function() {
@@ -62,8 +71,8 @@ var Main = React.createClass({
 
         <br/>
 
-        <div className="row" id="search-title">
-          <div className="col-md-12">
+        <div className="row">
+          <div className="col-md-12" id="search-title">
             <h2>Search</h2>
           </div>
         </div>
@@ -98,7 +107,7 @@ var Main = React.createClass({
           
         <div className="row">
           <div className="col-md-12" id="saved-window">
-            <Saved ref="child" />
+            <Saved getSavedArticles={this.getSavedArticles} saved={this.state.saved} />
           </div>
         </div>
 

@@ -7,9 +7,7 @@ var helper = {
     console.log(topic, begin, end);
 
     var apiKey = "5b386b2b1a0f41fa81106f5de0e7a266";
-
     var queryURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
-
     var qs = '?api-key=' + apiKey + '&q=' + topic;
 
     if (begin) {
@@ -22,7 +20,6 @@ var helper = {
 
     return axios.get(queryURL + qs)
     .then(function(response) {
-      console.log(response);
       if (response.data.response.docs.length > 0) {
         var res = [];
 
@@ -42,8 +39,7 @@ var helper = {
       else{
         return false;
       }
-    });//then
-    
+    });//then 
   },//runQuery
 
   getSaved: function() {
@@ -52,7 +48,10 @@ var helper = {
 
   postSaved: function(data) {
     axios.post("/api", data);
-    return true;
+  },
+
+  deleteSaved: function(data) {
+    axios.post("/api/delete", data);
   }
 
   

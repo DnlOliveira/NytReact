@@ -15,7 +15,7 @@ var Result = React.createClass({
     var i = event.target.value;
 
     var article = {
-      id: this.props.results[i].id,
+      id: this.props.results[i].articleID,
       title: this.props.results[i].title,
       url: this.props.results[i].url,
       date: this.props.results[i].date
