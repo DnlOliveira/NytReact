@@ -30,7 +30,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // -------------------------------------------------
 // MongoDB Configuration configuration
 if (process.env.PORT) {
-    connectionString = 'mongodb://heroku_t3wn0464:nn1gl3kcofueuilkf2n9af5924@ds129641.mlab.com:29641/heroku_t3wn0464';
+    connectionString = 'mongodb://heroku_kq38k19q:s9r2nllng9kusrpikoqt57vlmb@ds115352.mlab.com:15352/heroku_kq38k19q';
 } else {
     connectionString = 'mongodb://localhost/nytreact';
 }
