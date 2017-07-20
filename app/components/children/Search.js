@@ -17,8 +17,8 @@ var Search = React.createClass({
     newState[event.target.name] = event.target.value;
     this.setState(newState);
   },
-  
-  // handles the submit button 
+
+  // handles the submit button
   handleSubmit: function(event) {
     event.preventDefault();
 
@@ -30,7 +30,7 @@ var Search = React.createClass({
           begin: '',
           end: ''
       }
-    );  
+    );
   },
 
   render: function() {
@@ -39,22 +39,18 @@ var Search = React.createClass({
 
         <div className="row">
 
-          <div className="col-md-12">
+          <div className="col-md-12" id="form">
+
             <form id="myform" onSubmit={this.handleSubmit}>
-              <label>
-                <h3>Topic</h3>
-                <input name="topic" type="text" value={this.state.topic} onChange={this.handleChange}></input>
-              </label><br/>
-              <label>
-                <h3>Start Year</h3>
-                <input name="begin" type="text" value={this.state.begin} onChange={this.handleChange}></input>
-              </label><br/>
-              <label>
-                <h3>End Year</h3>
-                <input name="end" type="text" value={this.state.end} onChange={this.handleChange}></input>
-              </label><br/>
+              <img src="https://cdn1.iconfinder.com/data/icons/freeline/32/find_in_magnifier_magnifying_research_search_view_zoom-128.png"
+              width="35px"
+              />
+
+              <input placeholder="Topic" name="topic" type="text" value={this.state.topic} onChange={this.handleChange}></input>
+
               <button className="btn" type="submit">Search</button>
             </form>
+
           </div>
 
         </div>

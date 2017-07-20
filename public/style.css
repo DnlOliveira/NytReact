@@ -1,31 +1,57 @@
-#header,
-#search-title,
-#search-window,
+#wrapper{
+  width: 100%;
+}
+#header{
+  padding: 35px;
+  background: #cccccc;
+}
 #result-title,
+#result-window{
+  background: #ffffff;
+}
+#saved-window{
+  background: #cccccc;
+}
+
+#header,
 #result-window,
-#saved-title,
 #saved-window{
   display: block;
 	text-align: center;
-  border-style: solid;
+  /*border-style: solid;*/
   width: 100%;
-  background: rgba(204, 204, 204, 0.9);
 }
 
 body{
-  background: url('bg.jpg');
+  background-color: #ffffff;
 }
 body button{
   background-color: #002e5a;
   color: #ffffff;
 }
 
+#search-window{
+  display: block;
+	text-align: center;
+  width: 100%;
+  background: #cccccc;
+}
 #search-window form{
   padding: 20px;
 }
 #search-box{
   width: 100%;
 }
-#search-box input{
-  width: 100%;
+#myform img{
+  float: left;
+  margin: 5px;
+}
+#myform input{
+  width: 75%;
+  float: left;
+  padding: 5px;
+  margin: 5px;
+}
+#myform button{
+  margin: 5px;
 }

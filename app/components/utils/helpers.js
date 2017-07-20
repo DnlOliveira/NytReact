@@ -23,6 +23,8 @@ var helper = {
       if (response.data.response.docs.length > 0) {
         var res = [];
 
+        console.log(response.data.response.docs);
+
         for (var i = 0; i < 5; i++) {
           var doc = response.data.response.docs[i];
           var id = doc._id;
@@ -30,7 +32,8 @@ var helper = {
             title: doc.headline.main,
             url: doc.web_url,
             date: doc.pub_date.split('T')[0],
-            articleID: id
+            articleID: id,
+            snippet: doc.snippet
           }
           res.push(article);
         }//for loop
@@ -39,7 +42,7 @@ var helper = {
       else{
         return false;
       }
-    });//then 
+    });//then
   },//runQuery
 
   getSaved: function() {
@@ -54,7 +57,7 @@ var helper = {
     axios.post("/api/delete", data);
   }
 
-  
+
 
 };//helper object
 

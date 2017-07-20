@@ -67,14 +67,17 @@ app.get("/api", function(req, res) {
     var articles = [];
 
     doc.forEach( function(article) {
+      console.log(article);
       articles.push({
         title: article.title,
         url: article.URL,
         date: article.date,
-        articleID: article.articleID
+        articleID: article.articleID,
+        snippet: article.snippet
       });
     });
-    res.send(articles); 
+    console.log(articles[0]);
+    res.send(articles);
   });
 
 });
@@ -91,7 +94,8 @@ app.post("/api", function(req, res) {
     articleID: req.body.id,
     title: req.body.title,
     date: req.body.date,
-    URL: req.body.url
+    URL: req.body.url,
+    snippet: req.body.snippet
   }, function(err) {
     if (err) {
       console.log(err);

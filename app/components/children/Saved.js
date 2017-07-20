@@ -51,21 +51,23 @@ var Saved = React.createClass({
 
     // console.log(article);
 
-    this.deleteArticle(article); 
+    this.deleteArticle(article);
   },
 
   render: function() {
     return (
       <div className="row">
         <div className="col-md-12">
+          <h2>Saved Articles</h2>
           {this.props.saved.map( (res, index) => {
             return (
               <div key={index} className="row">
                 <div className="col-md-12">
-                  <h3><a href={res.url}>{res.title}</a></h3>
-                  <h4>{res.date}</h4>
-                  <button onClick={this.handleOnClick} className="btn" value={index}>Delete</button>
-                  <hr/>
+                <h3><a href={res.url}>{res.title}</a></h3>
+                <p>{res.snippet}</p>
+                <h5>{res.date}</h5>
+                <button onClick={this.handleOnClick} className="btn" value={index}>Delete</button>
+                <hr/>
                 </div>
               </div>
             );

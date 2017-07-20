@@ -8,7 +8,7 @@ var Result = React.createClass({
       results: this.props.results
     };
   },
-  
+
   handleOnClick: function(event) {
 
     console.log(event.target.value);
@@ -18,14 +18,15 @@ var Result = React.createClass({
       id: this.props.results[i].articleID,
       title: this.props.results[i].title,
       url: this.props.results[i].url,
-      date: this.props.results[i].date
+      date: this.props.results[i].date,
+      snippet: this.props.results[i].snippet
     };
 
     console.log(article);
 
     this.props.saveArticles(article);
 
-    
+
   },
 
   render: function() {
@@ -39,10 +40,13 @@ var Result = React.createClass({
               return (
                 <div key={index} className="row">
                   <div className="col-md-12">
+
                     <h3><a href={res.url}>{res.title}</a></h3>
-                    <h4>{res.date}</h4>
+                    <p>{res.snippet}</p>
+                    <h5>{res.date}</h5>
                     <button onClick={this.handleOnClick} className="btn" value={index}>Save</button>
                     <hr/>
+
                   </div>
                 </div>
               );

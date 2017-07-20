@@ -14,6 +14,9 @@ var ArticleSchema = new Schema({
   },
   URL: {
     type: String
+  },
+  snippet: {
+    type: String
   }
 
 });

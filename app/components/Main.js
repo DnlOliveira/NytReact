@@ -24,7 +24,7 @@ var Main = React.createClass({
     } ).then( (res) => {
       this.getSavedArticles();
     });
-    
+
   },
 
   searchForArticles: function(topic, begin, end){
@@ -38,7 +38,7 @@ var Main = React.createClass({
   getSavedArticles: function() {
     helpers.getSaved()
       .then(function(response) {
-        // console.log(response.data);
+        console.log(response.data);
         var res = response.data;
         var saved = [];
         for (var i = 0; i < res.length; i++) {
@@ -61,7 +61,7 @@ var Main = React.createClass({
 
   render: function() {
     return(
-      <div className="container">
+      <div className="container" id="wrapper">
 
         <div className="row">
           <div className="col-md-12" id="header">
@@ -69,27 +69,13 @@ var Main = React.createClass({
           </div>
         </div>
 
-        <br/>
 
-        <div className="row">
-          <div className="col-md-12" id="search-title">
-            <h2>Search</h2>
-          </div>
-        </div>
-      
         <div className="row">
           <div className="col-md-12" id="search-window">
             <Search searchForArticles={this.searchForArticles} />
           </div>
         </div>
 
-        <br/>
-
-        <div className="row">
-          <div className="col-md-12" id="result-title">
-            <h2>Search Results</h2>
-          </div>
-        </div>
 
         <div className="row">
           <div className="col-md-12" id="result-window">
@@ -97,14 +83,7 @@ var Main = React.createClass({
           </div>
         </div>
 
-        <br/>
 
-        <div className="row">
-          <div className="col-md-12" id="saved-title">
-            <h2>Saved Articles</h2>
-          </div>
-        </div>
-          
         <div className="row">
           <div className="col-md-12" id="saved-window">
             <Saved getSavedArticles={this.getSavedArticles} saved={this.state.saved} />
