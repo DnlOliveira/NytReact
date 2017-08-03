@@ -2,8 +2,13 @@
   width: 100%;
 }
 #header{
-  padding: 35px;
-  background: #cccccc;
+
+  padding: 100px;
+  /*background: #cccccc;*/
+  background: url("backg.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border-style: solid;
 }
 #result-title,
 #result-window{

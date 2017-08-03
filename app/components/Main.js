@@ -64,7 +64,7 @@ var Main = React.createClass({
       <div className="container" id="wrapper">
 
         <div className="row">
-          <div className="col-md-12" id="header">
+          <div className="col-md-12" id="head">
             <Header />
           </div>
         </div>
@@ -78,7 +78,7 @@ var Main = React.createClass({
 
 
         <div className="row">
-          <div className="col-md-12" id="result-window">
+          <div className="col-md-12" id="result-window" >
             <Result saveArticles={this.saveArticles} results={this.state.results} />
           </div>
         </div>

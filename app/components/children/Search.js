@@ -46,7 +46,7 @@ var Search = React.createClass({
               width="35px"
               />
 
-              <input placeholder="Topic" name="topic" type="text" value={this.state.topic} onChange={this.handleChange}></input>
+              <input placeholder="Search articles by topic" name="topic" type="text" value={this.state.topic} onChange={this.handleChange}></input>
 
               <button className="btn" type="submit">Search</button>
             </form>
