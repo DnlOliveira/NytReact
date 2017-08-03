@@ -19,20 +19,22 @@ var hashHistory = router.hashHistory;
 var IndexRoute = router.IndexRoute;
 
 var Main = require("../components/Main");
-// var Header = require("../components/children/Header");
+var Header = require("../components/children/Header");
 var Search = require("../components/children/Search");
 var Result = require("../components/children/Result");
-// var Saved = require("../components/children/Saved");
+var Saved = require("../components/children/Saved");
 
 module.exports = (
 
   <Router history={hashHistory}>
     <Route path="/" component={Main}>
+
       <Route path="search" component={Search} />
-      <Route path="result" component={Result} />
+      <Route path="saved" component={Saved} />
 
       {/* Show search by default */}
       <IndexRoute component={Search} />
+
     </Route>
   </Router>
 

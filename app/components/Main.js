@@ -5,6 +5,8 @@ var Header = require("./children/Header");
 var Result = require("./children/Result");
 var helpers = require("./utils/helpers");
 
+var Link = require("react-router").Link;
+
 var Main = React.createClass({
 
   getInitialState: function() {
