@@ -16,7 +16,7 @@ var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Sets an initial port.
-var PORT = process.env.PORT || 3000;
+var PORT = 80;
 
 // Run Morgan for Logging
 app.use(logger("dev"));
@@ -29,27 +29,27 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // -------------------------------------------------
 // MongoDB Configuration configuration
-if (process.env.PORT) {
-    connectionString = 'mongodb://heroku_kq38k19q:s9r2nllng9kusrpikoqt57vlmb@ds115352.mlab.com:15352/heroku_kq38k19q';
-} else {
-    connectionString = 'mongodb://localhost/nytreact';
-}
-
-mongoose.connect(connectionString).then(function() {
-  app.listen(PORT, function() {
-      console.log('listening on port ' + PORT);
-    });
-});
-
-var db = mongoose.connection;
-
-db.on("error", function(err) {
-  console.log("Mongoose Error: ", err);
-});
-
-db.once("open", function() {
-  console.log("Mongoose connection successful.");
-});
+// if (process.env.PORT) {
+//     connectionString = 'mongodb://heroku_kq38k19q:s9r2nllng9kusrpikoqt57vlmb@ds115352.mlab.com:15352/heroku_kq38k19q';
+// } else {
+//     connectionString = 'mongodb://localhost/nytreact';
+// }
+//
+// mongoose.connect(connectionString).then(function() {
+//   app.listen(PORT, function() {
+//       console.log('listening on port ' + PORT);
+//     });
+// });
+//
+// var db = mongoose.connection;
+//
+// db.on("error", function(err) {
+//   console.log("Mongoose Error: ", err);
+// });
+//
+// db.once("open", function() {
+//   console.log("Mongoose connection successful.");
+// });
 
 // -------------------------------------------------
 
