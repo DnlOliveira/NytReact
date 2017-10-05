@@ -16,7 +16,7 @@ var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Sets an initial port.
-var PORT = 80;
+var PORT = 3000;
 
 // Run Morgan for Logging
 app.use(logger("dev"));
@@ -24,6 +24,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+
+app.listen(PORT, function() {
+  console.log('listening on port ' + PORT);
+});
 
 // app.use(express.static("./public"));
 
